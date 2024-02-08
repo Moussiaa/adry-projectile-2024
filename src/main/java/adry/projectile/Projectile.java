@@ -26,8 +26,10 @@ public class Projectile {
     }
 
     // highest Y value of the Projectile
-    public double getPeakY() { return (velocity * (Math.sin(radians) * Math.sin(radians)) / (2 * GRAVITY)); }
+    public double getPeakY() {
+        return (velocity * (Math.sin(radians)) * (velocity * Math.sin(radians)) / (2 * GRAVITY));
+    }
 
     //when projectile is at its highest
-    public double getApex() { return (velocity * Math.sin(radians))/ GRAVITY; }
+    public double getApex() { return (velocity * Math.sin(radians)) / GRAVITY; }
 }
