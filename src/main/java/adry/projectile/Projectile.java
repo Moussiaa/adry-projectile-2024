@@ -32,5 +32,7 @@ public class Projectile {
     }
 
     //when projectile is at its highest
-    public double getApex() { return (velocity * Math.sin(radians)) / GRAVITY; }
+    public double getApex() {
+        return (velocity * Math.sin(radians)) / GRAVITY;
+    }
 }
