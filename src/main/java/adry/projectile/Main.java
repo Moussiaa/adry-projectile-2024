@@ -8,6 +8,6 @@ public class Main {
         System.out.println("Y: " + projectile1.getY());
         System.out.println("Y Peak: " + projectile1.getPeakY());
         System.out.println("Apex: " + projectile1.getApex());
-
+        System.out.println("X intercept: " + projectile1.getXIntercept());
     }
 }
