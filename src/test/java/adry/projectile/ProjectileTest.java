@@ -52,12 +52,12 @@ class ProjectileTest {
         assertEquals(3.42, actual, 0.01);
     }
     @Test
-    public void getXIntercept() {
+    public void getxIntercept() {
         // given
         Projectile projectile = new Projectile(31, 65);
 
         // when
-        double actual = projectile.getXIntercept();
+        double actual = projectile.getxIntercept();
 
         // then
         assertEquals(380.65, actual, 0.01);
