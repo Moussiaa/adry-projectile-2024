@@ -40,5 +40,4 @@ public class Projectile {
     public double getInterceptX() {
         return (2 * velocity * velocity * Math.sin(radians) * Math.cos(radians)) / GRAVITY;
     }
-
 }

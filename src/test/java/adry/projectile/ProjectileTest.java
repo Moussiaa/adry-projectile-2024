@@ -49,7 +49,7 @@ class ProjectileTest {
         Projectile projectile = new Projectile(31, 65);
 
         // when
-        double actual = projectile.getxIntercept();
+        double actual = projectile.getInterceptX();
 
         // then
         assertEquals(380.65, actual, 0.01);
@@ -59,7 +59,6 @@ class ProjectileTest {
     public void getApex() {
         // given
         Projectile projectile = new Projectile(31, 65);
-
         // when
         double actual = projectile.getApex();
 
