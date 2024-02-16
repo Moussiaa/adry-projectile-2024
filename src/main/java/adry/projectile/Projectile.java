@@ -31,8 +31,13 @@ public class Projectile {
         return (velocity * (Math.sin(radians)) * (velocity * Math.sin(radians)) / (2 * GRAVITY));
     }
 
-    //when projectile is at its highest
+    // when projectile is at its highest
     public double getApex() {
         return (velocity * Math.sin(radians)) / GRAVITY;
+    }
+
+    // value of x when it crosses the x-axis
+    public double getInterceptX() {
+        return (2 * velocity * velocity * Math.sin(radians) * Math.cos(radians)) / GRAVITY;
     }
 }
