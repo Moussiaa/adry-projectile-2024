@@ -43,10 +43,10 @@ public class ProjectileFrame extends JFrame {
         add(velocityField);
 
         // JSlider to display angle from 0-90
-        final int MIN = 0;
-        final int MAX = 90;
-        final int INITIAL = 45;
-        angleAdjuster = new JSlider(MIN, MAX, INITIAL);
+        final int min = 0;
+        final int max = 90;
+        final int initial = 45;
+        angleAdjuster = new JSlider(min, max, initial);
         angleAdjuster.setMajorTickSpacing(15);
         angleAdjuster.setPaintTicks(true);
         angleAdjuster.setPaintLabels(true);
