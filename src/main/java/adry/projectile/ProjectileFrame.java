@@ -15,7 +15,7 @@ public class ProjectileFrame extends JFrame {
     private JSlider angleAdjuster;
     private JTextField fieldX;
     private JTextField fieldY;
-    private JLabel interceptXlabel;
+    private JLabel interceptXlabel = new JLabel("X Intercept:");
     private JLabel peakYlabel;
 
 
@@ -32,7 +32,6 @@ public class ProjectileFrame extends JFrame {
         JLabel blankSpace = new JLabel();
         JButton calculateButton = new JButton("Calculate");
         peakYlabel = new JLabel("Peak Y:");
-        interceptXlabel = new JLabel("X Intercept:");
 
         // velocity
         velocityField = new JTextField();
