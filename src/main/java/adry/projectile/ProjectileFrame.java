@@ -85,7 +85,7 @@ public class ProjectileFrame extends JFrame {
         velocityField.getDocument().addDocumentListener(new SimpleDocumentListener() {
             @Override
             public void update(DocumentEvent e) {
-                //update();
+                calculate();
             }
         });
 
@@ -94,7 +94,7 @@ public class ProjectileFrame extends JFrame {
         angleAdjuster.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-               // update();
+                calculate();
             }
         });
 
@@ -102,14 +102,14 @@ public class ProjectileFrame extends JFrame {
         secondsField.getDocument().addDocumentListener(new SimpleDocumentListener() {
             @Override
             public void update(DocumentEvent e) {
-                //update();
+                calculate();
             }
         });
 
         calculateButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                      Projectile projectile = new Projectile(
+                        Projectile projectile = new Projectile(
                                 Double.parseDouble(velocityField.getText()),
                                 angleAdjuster.getValue()
                         );
@@ -123,24 +123,24 @@ public class ProjectileFrame extends JFrame {
                     }
                 }
         );
-
-
-        public void update() {
-            Projectile projectile = new Projectile(
-                    Double.parseDouble(velocityField.getText()),
-                    angleAdjuster.getValue()
-            );
-            projectile.setSeconds(
-                    Double.parseDouble(secondsField.getText())
-            );
-            interceptXLabel.setText(Double.toString(projectile.getX()));
-            peakYLabel.setText(Double.toString(projectile.getY()));
-            yField.setText(Double.toString(projectile.getPeakY()));
-            xField.setText(Double.toString(projectile.getInterceptX()));
-        }
-
-
     }
+
+
+    public void calculate() {
+        Projectile projectile = new Projectile(
+                Double.parseDouble(velocityField.getText()),
+                angleAdjuster.getValue()
+        );
+        projectile.setSeconds(
+                Double.parseDouble(secondsField.getText())
+        );
+        interceptXLabel.setText(Double.toString(projectile.getX()));
+        peakYLabel.setText(Double.toString(projectile.getY()));
+        yField.setText(Double.toString(projectile.getPeakY()));
+        xField.setText(Double.toString(projectile.getInterceptX()));
+    }
+
+
 }
 
 // object oriented programming is when you describe your program in terms of objects and how they relate to each other.
