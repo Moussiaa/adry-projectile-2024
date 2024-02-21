@@ -60,9 +60,9 @@ public class ProjectileFrame extends JFrame {
         JLabel emptyX = new JLabel();
         add(labelX);
         add(emptyX);
-        JLabel yLabel = new JLabel("Y");
+        JLabel labelY = new JLabel("Y");
         JLabel emptyY = new JLabel();
-        add(yLabel);
+        add(labelY);
         add(emptyY);
         fieldX = new JTextField();
         fieldY = new JTextField();
