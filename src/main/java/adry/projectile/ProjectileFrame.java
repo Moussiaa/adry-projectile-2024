@@ -10,13 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ProjectileFrame extends JFrame {
-    private JTextField velocityField;
-    private JTextField secondsField;
-    private JSlider angleAdjuster;
-    private JTextField fieldX;
-    private JTextField fieldY;
-    private JLabel interceptXlabel = new JLabel("X Intercept:");
-    private JLabel peakYlabel;
+    private final JTextField velocityField;
+    private final JTextField secondsField;
+    private final JSlider angleAdjuster;
+    private final JTextField fieldX;
+    private final JTextField fieldY;
+    private final JLabel interceptXlabel = new JLabel("X Intercept:");
+    private final JLabel peakYlabel;
 
 
     public ProjectileFrame() {
@@ -27,15 +27,19 @@ public class ProjectileFrame extends JFrame {
         // format JFrame with layout and views
         setLayout(new GridLayout(8, 2));
         JLabel velocityLabel = new JLabel("Velocity");
+        add(velocityLabel);
         JLabel angleLabel = new JLabel("Angle");
+        add(angleLabel);
         JLabel secondsLabel = new JLabel("Seconds");
+        add(secondsLabel);
         JLabel blankSpace = new JLabel();
+        add(blankSpace);
         JButton calculateButton = new JButton("Calculate");
+        add(calculateButton);
         peakYlabel = new JLabel("Peak Y:");
 
         // velocity
         velocityField = new JTextField();
-        add(velocityLabel);
         add(velocityField);
 
         // JSlider to display angle from 0-90
@@ -46,12 +50,10 @@ public class ProjectileFrame extends JFrame {
         angleAdjuster.setMajorTickSpacing(15);
         angleAdjuster.setPaintTicks(true);
         angleAdjuster.setPaintLabels(true);
-        add(angleLabel);
         add(angleAdjuster);
 
         // seconds
         secondsField = new JTextField();
-        add(secondsLabel);
         add(secondsField);
 
         // x & y
@@ -73,10 +75,6 @@ public class ProjectileFrame extends JFrame {
         // add row that displays x intercept
         add(interceptXlabel);
         add(fieldX);
-
-        add(blankSpace);
-        add(calculateButton);
-
 
         // add listeners
         velocityField.getDocument().addDocumentListener(new SimpleDocumentListener() {
