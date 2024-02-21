@@ -1,8 +1,6 @@
 package adry.projectile;
 
 
-import adry.projectile.SimpleDocumentListener;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -15,10 +13,10 @@ public class ProjectileFrame extends JFrame {
     private JTextField velocityField;
     private JTextField secondsField;
     private JSlider angleAdjuster;
-    private JTextField xField;
-    private JTextField yField;
-    private JLabel interceptXLabel;
-    private JLabel peakYLabel;
+    private JTextField fieldX;
+    private JTextField fieldY;
+    private JLabel interceptXlabel;
+    private JLabel peakYlabel;
 
 
     public ProjectileFrame() {
@@ -33,8 +31,8 @@ public class ProjectileFrame extends JFrame {
         JLabel secondsLabel = new JLabel("Seconds");
         JLabel blankSpace = new JLabel();
         JButton calculateButton = new JButton("Calculate");
-        peakYLabel = new JLabel("Peak Y:");
-        interceptXLabel = new JLabel("X Intercept:");
+        peakYlabel = new JLabel("Peak Y:");
+        interceptXlabel = new JLabel("X Intercept:");
 
         // velocity
         velocityField = new JTextField();
@@ -58,24 +56,24 @@ public class ProjectileFrame extends JFrame {
         add(secondsField);
 
         // x & y
-        JLabel xLabel = new JLabel("X");
-        JLabel xEmpty = new JLabel();
+        JLabel labelX = new JLabel("X");
+        JLabel emptyX = new JLabel();
+        add(labelX);
+        add(emptyX);
         JLabel yLabel = new JLabel("Y");
-        JLabel yEmpty = new JLabel();
-        xField = new JTextField();
-        yField = new JTextField();
-        add(xLabel);
-        add(xEmpty);
+        JLabel emptyY = new JLabel();
         add(yLabel);
-        add(yEmpty);
+        add(emptyY);
+        fieldX = new JTextField();
+        fieldY = new JTextField();
 
         // add row that displays peak y
-        add(peakYLabel);
-        add(yField);
+        add(peakYlabel);
+        add(fieldY);
 
         // add row that displays x intercept
-        add(interceptXLabel);
-        add(xField);
+        add(interceptXlabel);
+        add(fieldX);
 
         add(blankSpace);
         add(calculateButton);
@@ -90,7 +88,6 @@ public class ProjectileFrame extends JFrame {
         });
 
         // slider
-        angleAdjuster.getChangeListeners();
         angleAdjuster.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -116,10 +113,10 @@ public class ProjectileFrame extends JFrame {
                         projectile.setSeconds(
                                 Double.parseDouble(secondsField.getText())
                         );
-                        interceptXLabel.setText(Double.toString(projectile.getX()));
-                        peakYLabel.setText(Double.toString(projectile.getY()));
-                        yField.setText(Double.toString(projectile.getPeakY()));
-                        xField.setText(Double.toString(projectile.getInterceptX()));
+                        interceptXlabel.setText(Double.toString(projectile.getX()));
+                        peakYlabel.setText(Double.toString(projectile.getY()));
+                        fieldY.setText(Double.toString(projectile.getPeakY()));
+                        fieldX.setText(Double.toString(projectile.getInterceptX()));
                     }
                 }
         );
@@ -134,10 +131,10 @@ public class ProjectileFrame extends JFrame {
         projectile.setSeconds(
                 Double.parseDouble(secondsField.getText())
         );
-        interceptXLabel.setText(Double.toString(projectile.getX()));
-        peakYLabel.setText(Double.toString(projectile.getY()));
-        yField.setText(Double.toString(projectile.getPeakY()));
-        xField.setText(Double.toString(projectile.getInterceptX()));
+        interceptXlabel.setText(Double.toString(projectile.getX()));
+        peakYlabel.setText(Double.toString(projectile.getY()));
+        fieldY.setText(Double.toString(projectile.getPeakY()));
+        fieldX.setText(Double.toString(projectile.getInterceptX()));
     }
 
 
