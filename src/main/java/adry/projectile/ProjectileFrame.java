@@ -20,28 +20,30 @@ public class ProjectileFrame extends JFrame {
 
 
     public ProjectileFrame() {
-        setSize(400, 600);
+        setSize(800, 800);
         setTitle("Projectile Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        JPanel main = new JPanel();
+        main.setLayout(new BorderLayout()); // set a borderlayout to allow multiple areas
+        // tells JFrame to use this JPanel component and everything below it
+        setContentPane(main);
+
+        JPanel west = new JPanel();
+        main.add(west, BorderLayout.WEST);
+
         // format JFrame with layout and views
-        setLayout(new GridLayout(8, 2));
-        JLabel velocityLabel = new JLabel("Velocity");
-        add(velocityLabel);
-        JLabel angleLabel = new JLabel("Angle");
-        add(angleLabel);
-        JLabel secondsLabel = new JLabel("Seconds");
-        add(secondsLabel);
-        JLabel blankSpace = new JLabel();
-        add(blankSpace);
-        JButton calculateButton = new JButton("Calculate");
-        add(calculateButton);
-        peakYlabel = new JLabel("Peak Y:");
+        west.setLayout(new GridLayout(8, 2)); // designate it to w area
 
         // velocity
+        JLabel velocityLabel = new JLabel("Velocity");
+        west.add(velocityLabel);
         velocityField = new JTextField();
-        add(velocityField);
+        west.add(velocityField);
 
+        // angle
+        JLabel angleLabel = new JLabel("Angle");
+        west.add(angleLabel);
         // JSlider to display angle from 0-90
         final int min = 0;
         final int max = 90;
@@ -50,31 +52,40 @@ public class ProjectileFrame extends JFrame {
         angleAdjuster.setMajorTickSpacing(15);
         angleAdjuster.setPaintTicks(true);
         angleAdjuster.setPaintLabels(true);
-        add(angleAdjuster);
+        west.add(angleAdjuster);
 
         // seconds
+        JLabel secondsLabel = new JLabel("Seconds");
+        west.add(secondsLabel);
         secondsField = new JTextField();
-        add(secondsField);
+        west.add(secondsField);
 
         // x & y
         JLabel labelX = new JLabel("X");
         JLabel emptyX = new JLabel();
-        add(labelX);
-        add(emptyX);
+        west.add(labelX);
+        west.add(emptyX);
         JLabel labelY = new JLabel("Y");
         JLabel emptyY = new JLabel();
-        add(labelY);
-        add(emptyY);
+        west.add(labelY);
+        west.add(emptyY);
         fieldX = new JTextField();
         fieldY = new JTextField();
 
-        // add row that displays peak y
-        add(peakYlabel);
-        add(fieldY);
+        // row that displays peak y
+        peakYlabel = new JLabel("Peak Y:");
+        west.add(peakYlabel);
+        west.add(fieldY);
 
-        // add row that displays x intercept
-        add(interceptXlabel);
-        add(fieldX);
+        // row that displays x intercept
+        west.add(interceptXlabel);
+        west.add(fieldX);
+
+        // calculate button
+        JLabel blankSpace = new JLabel();
+        west.add(blankSpace);
+        JButton calculateButton = new JButton("Calculate");
+        west.add(calculateButton);
 
         // add listeners
         velocityField.getDocument().addDocumentListener(new SimpleDocumentListener() {
@@ -114,11 +125,15 @@ public class ProjectileFrame extends JFrame {
                         peakYlabel.setText(Double.toString(projectile.getY()));
                         fieldY.setText(Double.toString(projectile.getPeakY()));
                         fieldX.setText(Double.toString(projectile.getInterceptX()));
+                        calculate();
                     }
                 }
         );
-    }
 
+        ProjectileGraph graph = new ProjectileGraph();
+        main.add(graph, BorderLayout.CENTER);
+
+    }
 
     public void calculate() {
         Projectile projectile = new Projectile(
@@ -133,7 +148,6 @@ public class ProjectileFrame extends JFrame {
         fieldY.setText(Double.toString(projectile.getPeakY()));
         fieldX.setText(Double.toString(projectile.getInterceptX()));
     }
-
 
 }
 
