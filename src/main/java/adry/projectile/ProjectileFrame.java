@@ -152,6 +152,7 @@ public class ProjectileFrame extends JFrame {
             fieldY.setText(Double.toString(projectile.getPeakY()));
             fieldX.setText(Double.toString(projectile.getInterceptX()));
             graph.setProjectile(projectile);
+            System.out.println("Printing" + projectile.getInterceptX() + "now");
         } catch (Exception ignored){
 
         }
