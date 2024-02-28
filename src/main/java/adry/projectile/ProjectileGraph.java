@@ -19,20 +19,37 @@ public class ProjectileGraph extends JComponent {
         // you can translate the origin to the middle of the screen with g.translate(); method. Its two arguments are x,y,
         // with -y translating downwards. to get to the middle of the screen use
         //g.translate(0, getHeight());
-        g.drawString("(100, 100)", 100, -100);
-        g.setColor(Color.PINK);
-        g.drawLine(getWidth()/2, -getHeight()/2, getWidth(), getHeight());
-        g.drawRect(200, -200, 50, 50);
-        g.setColor(Color.ORANGE);
-        g.fillRect(400, -400, 25, 25);
-        g.setColor(Color.GREEN);
-        g.drawOval(200, -200, 50, 50);
+        //g.drawString("(100, 100)", 100, -100);
+        //g.setColor(Color.PINK);
+        //g.drawLine(getWidth()/2, -getHeight()/2, getWidth(), getHeight());
+        //g.drawRect(200, -200, 50, 50);
+        //g.setColor(Color.ORANGE);
+        //g.fillRect(400, -400, 25, 25);
+        //g.drawOval(getHeight(), -getWidth(), 1000, 1000);
 
+        g.translate(0, getHeight());
+        g.setColor(Color.BLUE);
+
+        int startX = 50;
+        int startY = getHeight() - 50;
+        int endX = getWidth() - 50;
+        int endY = startY; // Projectile ends at the same height
+
+        g.drawLine(startX, startY, endX, endY);
+
+      //  for(int i = 0; i < projectile.getInterceptX(); i++) {
+
+            // double x = getX();
+            //double y = getY();
+
+            //g.drawLine(prevx, prevy, x,);
+
+        //}
         g.fillOval(
-                (int) projectile.getX(),
+                (int) projectile.getX()/2,
                 (int) -projectile.getY(),
-                10,
-                10
+                15,
+                15
         );
     }
 
@@ -43,4 +60,6 @@ public class ProjectileGraph extends JComponent {
         // now tell operating system to call paintComponent() again.
         repaint();
     }
+
+
 }

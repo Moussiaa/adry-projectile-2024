@@ -17,6 +17,9 @@ public class ProjectileFrame extends JFrame {
     private final JTextField fieldY;
     private final JLabel interceptXlabel = new JLabel("X Intercept:");
     private final JLabel peakYlabel;
+    private final JTextField emptyX;
+    private final JTextField emptyY;
+    ProjectileGraph graph = new ProjectileGraph();
 
 
     public ProjectileFrame() {
@@ -62,23 +65,23 @@ public class ProjectileFrame extends JFrame {
 
         // x & y
         JLabel labelX = new JLabel("X");
-        JLabel emptyX = new JLabel();
+        emptyX = new JTextField();
         west.add(labelX);
         west.add(emptyX);
         JLabel labelY = new JLabel("Y");
-        JLabel emptyY = new JLabel();
+        emptyY = new JTextField();
         west.add(labelY);
         west.add(emptyY);
-        fieldX = new JTextField();
-        fieldY = new JTextField();
 
         // row that displays peak y
         peakYlabel = new JLabel("Peak Y:");
         west.add(peakYlabel);
+        fieldY = new JTextField();
         west.add(fieldY);
 
         // row that displays x intercept
         west.add(interceptXlabel);
+        fieldX = new JTextField();
         west.add(fieldX);
 
         // calculate button
@@ -121,8 +124,8 @@ public class ProjectileFrame extends JFrame {
                         projectile.setSeconds(
                                 Double.parseDouble(secondsField.getText())
                         );
-                        interceptXlabel.setText(Double.toString(projectile.getX()));
-                        peakYlabel.setText(Double.toString(projectile.getY()));
+                        emptyX.setText(Double.toString(projectile.getX()));
+                        emptyY.setText(Double.toString(projectile.getY()));
                         fieldY.setText(Double.toString(projectile.getPeakY()));
                         fieldX.setText(Double.toString(projectile.getInterceptX()));
                         calculate();
@@ -136,17 +139,22 @@ public class ProjectileFrame extends JFrame {
     }
 
     public void calculate() {
-        Projectile projectile = new Projectile(
-                Double.parseDouble(velocityField.getText()),
-                angleAdjuster.getValue()
-        );
-        projectile.setSeconds(
-                Double.parseDouble(secondsField.getText())
-        );
-        interceptXlabel.setText(Double.toString(projectile.getX()));
-        peakYlabel.setText(Double.toString(projectile.getY()));
-        fieldY.setText(Double.toString(projectile.getPeakY()));
-        fieldX.setText(Double.toString(projectile.getInterceptX()));
+        try {
+            Projectile projectile = new Projectile(
+                    Double.parseDouble(velocityField.getText()),
+                    angleAdjuster.getValue()
+            );
+            projectile.setSeconds(
+                    Double.parseDouble(secondsField.getText())
+            );
+            emptyX.setText(Double.toString(projectile.getX()));
+            emptyY.setText(Double.toString(projectile.getY()));
+            fieldY.setText(Double.toString(projectile.getPeakY()));
+            fieldX.setText(Double.toString(projectile.getInterceptX()));
+            graph.setProjectile(projectile);
+        } catch (Exception ignored){
+
+        }
     }
 
 }
