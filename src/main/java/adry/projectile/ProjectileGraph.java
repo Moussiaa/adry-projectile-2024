@@ -59,10 +59,11 @@ public class ProjectileGraph extends JComponent {
        double timeStep = 0.05; // Time step for simulation
        double prevX = startX;
        double prevY = startY;
-       for (double i = 0; i <= projectile.getInterceptX(); i += timeStep) {
+       double time = projectile.getSeconds();
+       for (double i = 0; i <= time; i += timeStep) {
            projectile.setSeconds(i);
            double x = startX + projectile.getX();
-           double y = startY - projectile.getY(); // Negate y because y increases downward in graphics
+           double y = startY - projectile.getY();
            g.drawLine((int) prevX, (int) prevY, (int) x, (int) y);
            prevX = x;
            prevY = y;
