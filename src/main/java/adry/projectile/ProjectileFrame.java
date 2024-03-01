@@ -19,7 +19,7 @@ public class ProjectileFrame extends JFrame {
     private final JLabel peakYlabel;
     private final JTextField emptyX;
     private final JTextField emptyY;
-    ProjectileGraph graph = new ProjectileGraph();
+    private final ProjectileGraph graph = new ProjectileGraph();
 
 
     public ProjectileFrame() {
@@ -129,11 +129,11 @@ public class ProjectileFrame extends JFrame {
                         fieldY.setText(Double.toString(projectile.getPeakY()));
                         fieldX.setText(Double.toString(projectile.getInterceptX()));
                         calculate();
+                        //getContentPane().add(new ProjectileGraph(projectile.getPeakY(), projectile.getInterceptX());
                     }
                 }
         );
 
-        ProjectileGraph graph = new ProjectileGraph();
         main.add(graph, BorderLayout.CENTER);
 
     }
@@ -152,8 +152,7 @@ public class ProjectileFrame extends JFrame {
             fieldY.setText(Double.toString(projectile.getPeakY()));
             fieldX.setText(Double.toString(projectile.getInterceptX()));
             graph.setProjectile(projectile);
-            System.out.println("Printing" + projectile.getInterceptX() + "now");
-        } catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
     }
