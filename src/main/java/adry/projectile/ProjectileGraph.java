@@ -22,7 +22,7 @@ public class ProjectileGraph extends JComponent {
         double prevY = 0;
         double seconds = projectile.getSeconds();
 
-        for (double i = 0; i <= seconds; i+= 0.05) {
+        for (double i = 0; i <= seconds; i += 0.05) {
             projectile.setSeconds(i);
             g.drawLine((int) prevX, (int) prevY, (int) projectile.getX(), (int) -projectile.getY());
             prevX = projectile.getX();
