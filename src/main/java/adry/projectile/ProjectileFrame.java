@@ -159,7 +159,4 @@ public class ProjectileFrame extends JFrame {
 
 }
 
-// object oriented programming is when you describe your program in terms of objects and how they relate to each other.
-// INHERITANCE (done above), POLYMORPHISM, ABSTRACTION, ENCAPSULATION (an objects member variables are private)
-// classes are blueprints for objects, but they can also be extended.
-// C = language to do things. Java = language to build things.
+
