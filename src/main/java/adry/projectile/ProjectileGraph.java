@@ -14,24 +14,23 @@ public class ProjectileGraph extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // you can translate the origin to the middle of the screen with g.translate(); method. Its two arguments are x,y,
-        // with -y translating downwards. to get to the middle of the screen use
+        // you can translate the origin to the middle of the screen with g.translate(); method.
+        // Its two arguments are x and y, with -y translating downwards. to get to the middle of the screen use
         g.translate(0, getHeight());
 
-        double prevX = 0;//projectile.getX();
-        double prevY = 0;//projectile.getY();
+        double prevX = 0;
+        double prevY = 0;
         double seconds = projectile.getSeconds();
 
-
-        for (double i = 0; i <= seconds; i+=0.000005) {
+        for (double i = 0; i <= seconds; i+= 0.05) {
             projectile.setSeconds(i);
-            g.drawLine((int) prevX, (int) prevY, (int) projectile.getX(), (int)-projectile.getY());
+            g.drawLine((int) prevX, (int) prevY, (int) projectile.getX(), (int) -projectile.getY());
             prevX = projectile.getX();
             prevY = -projectile.getY();
         }
 
         g.setColor(BLUE);
-        g.fillOval((int)projectile.getInterceptX()/2, (int)-projectile.getPeakY(), 10, 10);
+        g.fillOval((int) projectile.getInterceptX() / 2, (int) -projectile.getPeakY(), 10, 10);
     }
 
     public void setProjectile(Projectile projectile) {
