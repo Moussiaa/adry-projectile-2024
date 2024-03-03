@@ -18,11 +18,11 @@ public class ProjectileGraph extends JComponent {
         // Its two arguments are x and y, with -y translating downwards. to get to the middle of the screen use
         g.translate(0, getHeight());
 
-        double prevX = 0;
-        double prevY = 0;
+        double prevX = projectile.getX();
+        double prevY = projectile.getY();
         double seconds = projectile.getSeconds();
 
-        for (double i = 0; i <= seconds; i += 0.05) {
+        for (double i = 0; i <= projectile.getApex() * 2 + 1; i += 0.05) {
             projectile.setSeconds(i);
             g.drawLine((int) prevX, (int) prevY, (int) projectile.getX(), (int) -projectile.getY());
             prevX = projectile.getX();
@@ -30,7 +30,7 @@ public class ProjectileGraph extends JComponent {
         }
 
         g.setColor(BLUE);
-        g.fillOval((int) projectile.getInterceptX() / 2, (int) -projectile.getPeakY(), 10, 10);
+        g.fillOval((int) projectile.getInterceptX() / 2 - 3, (int) -projectile.getPeakY() -3, 6, 6);
     }
 
     public void setProjectile(Projectile projectile) {
