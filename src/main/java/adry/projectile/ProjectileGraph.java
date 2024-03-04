@@ -30,7 +30,7 @@ public class ProjectileGraph extends JComponent {
         }
 
         g.setColor(BLUE);
-        g.fillOval((int) projectile.getInterceptX() / 2 - 3, (int) -projectile.getPeakY() -3, 6, 6);
+        g.fillOval((int) projectile.getInterceptX() / 2 - 3, (int) -projectile.getPeakY() - 3, 6, 6);
     }
 
     public void setProjectile(Projectile projectile) {
