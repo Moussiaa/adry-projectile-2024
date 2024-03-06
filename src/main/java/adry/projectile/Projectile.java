@@ -17,12 +17,15 @@ public class Projectile {
 
     public void setSeconds(double seconds) { this.seconds = seconds; }
 
+    public double getSeconds() {
+        return seconds;
+    }
+
     public double getX() {
         return Math.cos(radians) * velocity * seconds;
     }
 
     public double getY() {
-
         return Math.sin(radians) * velocity * seconds - (.5 * GRAVITY * (seconds * seconds));
     }
 
