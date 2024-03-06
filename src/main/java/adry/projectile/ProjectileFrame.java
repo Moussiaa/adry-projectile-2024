@@ -128,8 +128,8 @@ public class ProjectileFrame extends JFrame {
     public void calculate() {
         try {
             Projectile projectile = new Projectile(
-                    Double.parseDouble(velocityField.getText()),
-                    angleAdjuster.getValue()
+                    angleAdjuster.getValue(),
+                    Double.parseDouble(velocityField.getText())
             );
             projectile.setSeconds(
                     Double.parseDouble(secondsField.getText())
