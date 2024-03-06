@@ -17,8 +17,8 @@ public class ProjectileFrame extends JFrame {
     private final JTextField fieldY;
     private final JLabel interceptXlabel = new JLabel("X Intercept:");
     private final JLabel peakYlabel;
-    private final JTextField emptyX;
-    private final JTextField emptyY;
+    private final JTextField valueX;
+    private final JTextField valueY;
     private final ProjectileGraph graph = new ProjectileGraph();
 
 
@@ -65,13 +65,13 @@ public class ProjectileFrame extends JFrame {
 
         // x & y
         JLabel labelX = new JLabel("X");
-        emptyX = new JTextField();
+        valueX = new JTextField();
         west.add(labelX);
-        west.add(emptyX);
+        west.add(valueX);
         JLabel labelY = new JLabel("Y");
-        emptyY = new JTextField();
+        valueY = new JTextField();
         west.add(labelY);
-        west.add(emptyY);
+        west.add(valueY);
 
         // row that displays peak y
         peakYlabel = new JLabel("Peak Y:");
@@ -117,25 +117,12 @@ public class ProjectileFrame extends JFrame {
         calculateButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        Projectile projectile = new Projectile(
-                                Double.parseDouble(velocityField.getText()),
-                                angleAdjuster.getValue()
-                        );
-                        projectile.setSeconds(
-                                Double.parseDouble(secondsField.getText())
-                        );
-                        emptyX.setText(Double.toString(projectile.getX()));
-                        emptyY.setText(Double.toString(projectile.getY()));
-                        fieldY.setText(Double.toString(projectile.getPeakY()));
-                        fieldX.setText(Double.toString(projectile.getInterceptX()));
                         calculate();
-                        //getContentPane().add(new ProjectileGraph(projectile.getPeakY(), projectile.getInterceptX());
                     }
                 }
         );
 
         main.add(graph, BorderLayout.CENTER);
-
     }
 
     public void calculate() {
@@ -147,8 +134,8 @@ public class ProjectileFrame extends JFrame {
             projectile.setSeconds(
                     Double.parseDouble(secondsField.getText())
             );
-            emptyX.setText(Double.toString(projectile.getX()));
-            emptyY.setText(Double.toString(projectile.getY()));
+            valueX.setText(Double.toString(projectile.getX()));
+            valueY.setText(Double.toString(projectile.getY()));
             fieldY.setText(Double.toString(projectile.getPeakY()));
             fieldX.setText(Double.toString(projectile.getInterceptX()));
             graph.setProjectile(projectile);
