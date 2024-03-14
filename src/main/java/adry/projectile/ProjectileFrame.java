@@ -11,7 +11,9 @@ import java.awt.event.ActionListener;
 
 public class ProjectileFrame extends JFrame {
     private final JTextField velocityField;
+    private final JTextField angleField;
     private final JTextField secondsField;
+    private final JSlider velocityAdjuster;
     private final JSlider angleAdjuster;
     private final JTextField fieldX;
     private final JTextField fieldY;
@@ -36,17 +38,42 @@ public class ProjectileFrame extends JFrame {
         main.add(west, BorderLayout.WEST);
 
         // format JFrame with layout and views
-        west.setLayout(new GridLayout(8, 2)); // designate it to w area
+        west.setLayout(new GridLayout(10, 2)); // designate it to w area
 
         // velocity
         JLabel velocityLabel = new JLabel("Velocity");
         west.add(velocityLabel);
+
+        // velocity slider
+        final int minV = 0;
+        final int maxV = 100;
+        final int initialV = 45;
+        velocityAdjuster = new JSlider(minV, maxV, initialV);
+        velocityAdjuster.setMajorTickSpacing(15);
+        velocityAdjuster.setPaintTicks(true);
+        velocityAdjuster.setPaintLabels(true);
+        west.add(velocityAdjuster);
+
+        velocityAdjuster.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                velocityField.setText(" " + velocityAdjuster.getValue());
+                calculate();
+            }
+        });
+
+        // empty box
+        velocityLabel = new JLabel();
+        west.add(velocityLabel);
+
+        // velocity value
         velocityField = new JTextField();
         west.add(velocityField);
 
         // angle
         JLabel angleLabel = new JLabel("Angle");
         west.add(angleLabel);
+
         // JSlider to display angle from 0-90
         final int min = 0;
         final int max = 90;
@@ -56,6 +83,23 @@ public class ProjectileFrame extends JFrame {
         angleAdjuster.setPaintTicks(true);
         angleAdjuster.setPaintLabels(true);
         west.add(angleAdjuster);
+
+        // bland box
+        angleLabel = new JLabel();
+        west.add(angleLabel);
+
+        // bland box with angle value
+        angleField = new JTextField();
+        west.add(angleField);
+
+        // change listener for angle
+        angleAdjuster.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                angleField.setText(" " + angleAdjuster.getValue());
+                calculate();
+            }
+        });
 
         // seconds
         JLabel secondsLabel = new JLabel("Seconds");
@@ -144,6 +188,5 @@ public class ProjectileFrame extends JFrame {
         }
     }
 }
-
 
 
