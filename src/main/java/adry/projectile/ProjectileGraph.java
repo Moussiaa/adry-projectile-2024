@@ -5,16 +5,14 @@ import java.awt.*;
 
 import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
+import java.text.DecimalFormat;
+
 
 public class ProjectileGraph extends JComponent {
 
+    private static final DecimalFormat FORMAT = new DecimalFormat("0.00");
 
-    public Projectile projectile;
-
-    public ProjectileGraph() {
-        this.projectile = new Projectile(31, 65);
-        this.projectile.setSeconds(2.7);
-    }
+    public Projectile projectile = new Projectile(31, 65);
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -62,7 +60,7 @@ public class ProjectileGraph extends JComponent {
         g.fillOval((int) projectile.getInterceptX() / 2 - 3, (int) -projectile.getPeakY() - 3, 6, 6);
 
         // Display the Peak in blue text
-        String peakText = "(" + projectile.getInterceptX() + ", " + -projectile.getPeakY() + ")";
+        String peakText = "(" + FORMAT.format(projectile.getInterceptX()) + ", " + FORMAT.format(-projectile.getPeakY()) + ")";
         g.setColor(BLUE);
         g.drawString(peakText, getWidth() / 2 + 10, getHeight() / 2 + 20);
 
